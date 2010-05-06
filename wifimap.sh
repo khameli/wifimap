@@ -5,6 +5,8 @@
 ## Variables
 # identité : id
 # jour : "$(date +%F-%a)log"
+
+logfile=$(date +%F-%a)log
 # memoire libre sur hd er ram ( à vérifier toutes les heures ) : free
 # Répertoire de log
 replog=/home/$(logname)/.wifimap
@@ -45,8 +47,11 @@ then
 
 echo "Répertoire $replog en place."
 echo "Prêt à logger"
+return 0
 }
 # dev : essayer de faire une version avec tous les test au début et case après.
+# dev : utiliser $stopexit comme variable locale et la fournir la fonction en tant que paramètre
+
 
 testintrusion () {
 # verification de non intrusion
@@ -56,7 +61,7 @@ testintrusion () {
 
 scanwifi () {
 # scanne le réseau local à la recherche d'intrus connecté en wifi
-nmap -sP 192.168.0.10,11,13-19
+nmap -sP 192.168.0.10,11,13-19 1> /tmp/wifimap.tmp 2> $replog/error.$logfile
 
 
 }
