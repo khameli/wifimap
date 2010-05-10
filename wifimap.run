@@ -1,0 +1,8 @@
+#! /bin/bash
+
+sleep 20
+date >> ~/.wifimap/current.log
+echo "Lancement du balayage" >> ~/.wifimap/current.log
+/home/pierre/dev/wifimap/wifimap.sh
+echo "Wifimap lancé"  >> ~/.wifimap/current.log
+exit 456
